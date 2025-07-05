@@ -1,14 +1,11 @@
 from aiogram import Bot, Dispatcher, types
-import os
-from dotenv import load_dotenv
+from aiogram import F  # أضف هذا السطر الجديد
 
-load_dotenv()
-bot = Bot(token=os.getenv("TOKEN"))
+bot = Bot(token="TOKEN")  # احتفظ بالتوكن كما هو
 dp = Dispatcher()
 
-@dp.message(F.text == '/start')  # نسخ هذا السطر بالضبط
+@dp.message(F.text == '/start')  # نفس السطر الذي استخدمته لكن الآن سيعمل
 async def start(message: types.Message):
-    await message.answer("🎉 مرحبًا! أنا بوت الأرقام الجاهز!")
+    await message.answer("أهلاً بك! البوت يعمل الآن 🎉")
 
-if __name__ == "__main__":
-    dp.run_polling(bot)
+dp.run_polling(bot)
