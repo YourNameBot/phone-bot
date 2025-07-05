@@ -6,7 +6,7 @@ load_dotenv()
 bot = Bot(token=os.getenv("TOKEN"))
 dp = Dispatcher()
 
-@dp.message(commands=['start'])
+@dp.message(F.text == '/start')  # نسخ هذا السطر بالضبط
 async def start(message: types.Message):
     await message.answer("🎉 مرحبًا! أنا بوت الأرقام الجاهز!")
 
